@@ -16,7 +16,23 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key !== 'Escape') return;
         closeLightbox();
         closeVideo();
+        closeProductModal();
     });
+
+    document.addEventListener('click', (e) => {
+        const hit = e.target.closest('.modal-hit');
+        if (!hit) return;
+        const name = hit.getAttribute('data-pname');
+        const price = parseFloat(hit.getAttribute('data-pprice'), 10);
+        const pimg = hit.getAttribute('data-pimg');
+        if (!name || !pimg || Number.isNaN(price)) return;
+        openProductModal(name, price, pimg);
+    });
+
+    const productModalAdd = document.getElementById('product-modal-add');
+    if (productModalAdd) {
+        productModalAdd.addEventListener('click', addFromProductModal);
+    }
     lucide.createIcons();
 });
 
@@ -218,6 +234,38 @@ function closeVideo() {
     const iframe = document.getElementById('video-iframe');
     if (iframe) iframe.src = '';
     if (modal) modal.classList.remove('open');
+}
+
+// ===== PRODUCT / MUSIC PREVIEW MODAL =====
+let productModalState = { name: '', price: 0, img: '' };
+
+function openProductModal(name, price, img) {
+    productModalState = { name, price, img };
+    const modal = document.getElementById('product-modal');
+    const imgEl = document.getElementById('product-modal-img');
+    const titleEl = document.getElementById('product-modal-title');
+    const priceEl = document.getElementById('product-modal-price');
+    if (!modal || !imgEl || !titleEl || !priceEl) return;
+    imgEl.src = img;
+    imgEl.alt = name;
+    titleEl.textContent = name;
+    priceEl.textContent = `$${price.toFixed(2)}`;
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    lucide.createIcons();
+}
+
+function closeProductModal() {
+    const modal = document.getElementById('product-modal');
+    if (modal) modal.classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+function addFromProductModal() {
+    const s = productModalState;
+    if (!s.name) return;
+    addToCart(s.name, s.price, s.img);
+    closeProductModal();
 }
 
 // ===== NEWSLETTER & CONTACT =====

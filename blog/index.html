@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog · Enza Rigano</title>
+  <meta name="description" content="Notas, novedades y manifiesto de Enza Rigano."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet"/>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="../style.css?v=24"/>
+</head>
+<body>
+
+<header id="header" class="header-blog">
+  <div class="header-inner">
+    <a href="../index.html" class="logo">ENZA<span>RIGANO</span></a>
+    <nav class="nav-links" aria-label="Principal">
+      <a href="../index.html#about">Sobre Mí</a>
+      <a href="index.html" aria-current="page">Blog</a>
+      <a href="../index.html#store">Tienda</a>
+      <a href="../index.html#contact">Contacto</a>
+    </nav>
+    <button type="button" class="nav-toggle" onclick="document.getElementById('mobile-nav-blog').classList.toggle('open')" aria-label="Abrir menú"><i data-lucide="menu"></i></button>
+  </div>
+</header>
+
+<nav id="mobile-nav-blog" class="mobile-nav">
+  <a href="../index.html#about">Sobre Mí</a>
+  <a href="index.html">Blog</a>
+  <a href="../index.html#store">Tienda</a>
+  <a href="../index.html#contact">Contacto</a>
+</nav>
+
+<main class="blog-page">
+  <div class="container">
+    <div class="section-header blog-page-header">
+      <div class="section-tag">Blog</div>
+      <h1 class="section-title">Manifiesto &amp; <em>notas</em></h1>
+      <p class="section-sub">Historias detrás de la música y la gira.</p>
+    </div>
+    <div id="blog-list" class="blog-list"></div>
+  </div>
+</main>
+
+<footer class="footer blog-footer">
+  <div class="container footer-bottom" style="border-top: none; padding-top: 2rem;">
+    <span><a href="../index.html">← Volver al inicio</a></span>
+    <span>© Enza Rigano</span>
+  </div>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script src="../js/firebase-config.js"></script>
+<script src="../js/public-blog.js"></script>
+<script src="../js/blog-list-page.js"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="robots" content="noindex, nofollow"/>
+  <title>Admin · Blog Enza Rigano</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../style.css?v=24"/>
+</head>
+<body class="admin-body">
+
+<header class="admin-header">
+  <div class="container admin-header-inner">
+    <a href="../index.html" class="logo admin-logo">ENZA<span>RIGANO</span></a>
+    <span class="admin-badge">Blog · Administración</span>
+    <button type="button" id="btn-logout" class="btn-outline admin-logout" hidden>Cerrar sesión</button>
+  </div>
+</header>
+
+<main class="admin-main container">
+  <p id="config-missing" class="blog-msg blog-msg--warn admin-banner" hidden>
+    Falta configurar <code>js/firebase-config.js</code> en la raíz del sitio con las credenciales del proyecto Firebase.
+  </p>
+
+  <section id="login-panel" class="admin-login-panel">
+    <h1 class="admin-page-title">Acceso al blog</h1>
+    <p class="admin-intro">Inicia sesión con el correo autorizado. Primera vez: usa «Crear cuenta» con un correo seguro solo para ti.</p>
+    <div class="admin-login-fields">
+      <label for="login-email">Correo</label>
+      <input id="login-email" type="email" autocomplete="username" placeholder="tu@email.com"/>
+      <label for="login-password">Contraseña</label>
+      <input id="login-password" type="password" autocomplete="current-password" placeholder="••••••••"/>
+    </div>
+    <p id="login-msg" class="admin-msg" hidden></p>
+    <div class="admin-login-actions">
+      <button type="button" id="btn-login" class="btn-primary">Entrar</button>
+      <button type="button" id="btn-register" class="btn-outline admin-btn-secondary">Crear cuenta</button>
+    </div>
+  </section>
+
+  <section id="admin-panel" class="admin-editor" hidden>
+    <div class="admin-editor-head">
+      <h1 id="admin-form-title" class="admin-page-title">Nueva entrada</h1>
+      <button type="button" id="btn-new-post" class="btn-outline">Nueva entrada</button>
+    </div>
+
+    <form id="post-form" class="admin-form">
+      <label for="post-title">Título</label>
+      <input id="post-title" type="text" required maxlength="200" placeholder="Título del post"/>
+
+      <label for="post-excerpt">Resumen <span class="admin-hint">(opcional; si lo dejas vacío se genera solo)</span></label>
+      <textarea id="post-excerpt" rows="2" maxlength="400" placeholder="Una línea para listados"></textarea>
+
+      <label for="post-body">Contenido</label>
+      <textarea id="post-body" rows="14" required placeholder="Escribe aquí. Separa párrafos con una línea en blanco."></textarea>
+
+      <label class="admin-checkbox">
+        <input id="post-published" type="checkbox"/>
+        <span>Publicar (visible en la web)</span>
+      </label>
+
+      <p id="form-msg" class="admin-msg" hidden></p>
+      <button type="submit" class="btn-primary admin-submit">Guardar entrada</button>
+    </form>
+
+    <div class="admin-list-wrap">
+      <h2 class="admin-list-title">Tus entradas</h2>
+      <ul id="admin-post-list" class="admin-post-list"></ul>
+    </div>
+  </section>
+</main>
+
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script src="../js/firebase-config.js"></script>
+<script src="../js/admin-blog.js"></script>
+</body>
+</html>

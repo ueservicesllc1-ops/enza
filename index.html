@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet"/>
   <script src="https://unpkg.com/lucide@latest"></script>
-  <link rel="stylesheet" href="style.css?v=23"/>
+  <link rel="stylesheet" href="style.css?v=25"/>
 </head>
 <body>
 
@@ -36,7 +36,9 @@
       <a href="#gallery">Fotos</a>
       <a href="#moments">Momentos</a>
       <a href="#videos">Videos</a>
+      <a href="#music">Música</a>
       <a href="#store">Tienda</a>
+      <a href="blog/index.html">Blog</a>
       <a href="#newsletter">Newsletter</a>
       <a href="#contact">Contacto</a>
     </nav>
@@ -50,7 +52,9 @@
   <a href="#gallery" onclick="toggleNav()">Fotos</a>
   <a href="#moments" onclick="toggleNav()">Momentos</a>
   <a href="#videos" onclick="toggleNav()">Videos</a>
+  <a href="#music" onclick="toggleNav()">Música</a>
   <a href="#store" onclick="toggleNav()">Tienda</a>
+  <a href="blog/index.html" onclick="toggleNav()">Blog</a>
   <a href="#newsletter" onclick="toggleNav()">Newsletter</a>
   <a href="#contact" onclick="toggleNav()">Contacto</a>
 </nav>
@@ -218,6 +222,55 @@
   </div>
 </section>
 
+<!-- ===== MÚSICA (venta digital + streaming) ===== -->
+<section id="music" class="music-store">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Música</div>
+      <h2 class="section-title">Escucha &amp; <em>compra</em></h2>
+      <p class="section-sub">Lanza oficiales en streaming y descarga digital. Sustituye los enlaces de Spotify por los tuyos cuando los tengas.</p>
+    </div>
+    <div class="music-grid">
+      <article class="music-card">
+        <button type="button" class="modal-hit music-cover-hit" data-pname="Manifestar — Álbum (digital)" data-pprice="9.99" data-pimg="public/album1.png" aria-label="Ampliar portada Manifestar">
+          <img src="public/album1.png" alt="Manifestar — portada álbum" class="music-cover-img" width="400" height="400" loading="lazy">
+        </button>
+        <h3 class="music-card-title">Manifestar</h3>
+        <p class="music-card-meta">Álbum · Descarga HD</p>
+        <span class="music-card-price">$9.99</span>
+        <div class="music-card-actions">
+          <a href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer" class="btn-outline music-stream-btn">Spotify</a>
+          <button type="button" class="btn-primary music-add-btn" onclick="addToCart('Manifestar — Álbum (digital)', 9.99, 'public/album1.png')">Añadir <i data-lucide="plus" class="btn-lucide" aria-hidden="true"></i></button>
+        </div>
+      </article>
+      <article class="music-card">
+        <button type="button" class="modal-hit music-cover-hit" data-pname="Single — Nuevo amanecer (digital)" data-pprice="1.99" data-pimg="public/album2.png" aria-label="Ampliar portada single">
+          <img src="public/album2.png" alt="Single Nuevo amanecer" class="music-cover-img" width="400" height="400" loading="lazy">
+        </button>
+        <h3 class="music-card-title">Nuevo amanecer</h3>
+        <p class="music-card-meta">Single digital</p>
+        <span class="music-card-price">$1.99</span>
+        <div class="music-card-actions">
+          <a href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer" class="btn-outline music-stream-btn">Spotify</a>
+          <button type="button" class="btn-primary music-add-btn" onclick="addToCart('Single — Nuevo amanecer (digital)', 1.99, 'public/album2.png')">Añadir <i data-lucide="plus" class="btn-lucide" aria-hidden="true"></i></button>
+        </div>
+      </article>
+      <article class="music-card">
+        <button type="button" class="modal-hit music-cover-hit" data-pname="EP Sesiones en vivo (digital)" data-pprice="4.99" data-pimg="public/album3.png" aria-label="Ampliar portada EP">
+          <img src="public/album3.png" alt="EP Sesiones en vivo" class="music-cover-img" width="400" height="400" loading="lazy">
+        </button>
+        <h3 class="music-card-title">Sesiones en vivo</h3>
+        <p class="music-card-meta">EP · Digital</p>
+        <span class="music-card-price">$4.99</span>
+        <div class="music-card-actions">
+          <a href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer" class="btn-outline music-stream-btn">Spotify</a>
+          <button type="button" class="btn-primary music-add-btn" onclick="addToCart('EP Sesiones en vivo (digital)', 4.99, 'public/album3.png')">Añadir <i data-lucide="plus" class="btn-lucide" aria-hidden="true"></i></button>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- ===== STORE ===== -->
 <section id="store" class="marketplace">
   <div class="container">
@@ -229,7 +282,9 @@
       <button type="button" class="carousel-arrow carousel-arrow-prev" onclick="scrollProductCarousel(-1)" aria-label="Productos anteriores"><i data-lucide="chevron-left" aria-hidden="true"></i></button>
       <div class="product-carousel" id="product-carousel">
       <div class="product-card">
-        <img src="public/camiseta.png" alt="Camiseta Manifestar" class="product-img" width="400" height="400" loading="lazy">
+        <button type="button" class="modal-hit product-img-hit" data-pname="Camiseta Manifestar" data-pprice="29.99" data-pimg="public/camiseta.png" aria-label="Ver Camiseta Manifestar">
+          <img src="public/camiseta.png" alt="Camiseta Manifestar" class="product-img" width="400" height="400" loading="lazy">
+        </button>
         <div class="product-info">
           <h3>Camiseta Manifestar</h3>
           <span class="product-price">$29.99</span>
@@ -237,7 +292,9 @@
         </div>
       </div>
       <div class="product-card">
-        <img src="public/hoodie.png" alt="Hoodie" class="product-img" width="400" height="400" loading="lazy">
+        <button type="button" class="modal-hit product-img-hit" data-pname="Hoodie Enza" data-pprice="64.99" data-pimg="public/hoodie.png" aria-label="Ver Hoodie Enza">
+          <img src="public/hoodie.png" alt="Hoodie" class="product-img" width="400" height="400" loading="lazy">
+        </button>
         <div class="product-info">
           <h3>Hoodie Enza</h3>
           <span class="product-price">$64.99</span>
@@ -245,7 +302,9 @@
         </div>
       </div>
       <div class="product-card">
-        <img src="public/gorra.png" alt="Gorra" class="product-img" width="400" height="400" loading="lazy">
+        <button type="button" class="modal-hit product-img-hit" data-pname="Gorra oficial" data-pprice="26.99" data-pimg="public/gorra.png" aria-label="Ver gorra oficial">
+          <img src="public/gorra.png" alt="Gorra" class="product-img" width="400" height="400" loading="lazy">
+        </button>
         <div class="product-info">
           <h3>Gorra oficial</h3>
           <span class="product-price">$26.99</span>
@@ -253,7 +312,9 @@
         </div>
       </div>
       <div class="product-card">
-        <img src="public/taza.png" alt="Taza" class="product-img" width="400" height="400" loading="lazy">
+        <button type="button" class="modal-hit product-img-hit" data-pname="Taza colección" data-pprice="19.99" data-pimg="public/taza.png" aria-label="Ver taza colección">
+          <img src="public/taza.png" alt="Taza" class="product-img" width="400" height="400" loading="lazy">
+        </button>
         <div class="product-info">
           <h3>Taza colección</h3>
           <span class="product-price">$19.99</span>
@@ -261,7 +322,9 @@
         </div>
       </div>
       <div class="product-card">
-        <img src="public/cuadro.png" alt="Cuadro" class="product-img" width="400" height="400" loading="lazy">
+        <button type="button" class="modal-hit product-img-hit" data-pname="Cuadro edición limitada" data-pprice="48.99" data-pimg="public/cuadro.png" aria-label="Ver cuadro">
+          <img src="public/cuadro.png" alt="Cuadro" class="product-img" width="400" height="400" loading="lazy">
+        </button>
         <div class="product-info">
           <h3>Cuadro edición limitada</h3>
           <span class="product-price">$48.99</span>
@@ -269,7 +332,9 @@
         </div>
       </div>
       <div class="product-card">
-        <img src="public/agenda.png" alt="Agenda" class="product-img" width="400" height="400" loading="lazy">
+        <button type="button" class="modal-hit product-img-hit" data-pname="Agenda Manifestar" data-pprice="34.99" data-pimg="public/agenda.png" aria-label="Ver agenda">
+          <img src="public/agenda.png" alt="Agenda" class="product-img" width="400" height="400" loading="lazy">
+        </button>
         <div class="product-info">
           <h3>Agenda Manifestar</h3>
           <span class="product-price">$34.99</span>
@@ -278,6 +343,21 @@
       </div>
     </div>
       <button type="button" class="carousel-arrow carousel-arrow-next" onclick="scrollProductCarousel(1)" aria-label="Más productos"><i data-lucide="chevron-right" aria-hidden="true"></i></button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BLOG PREVIEW ===== -->
+<section id="blog" class="blog-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Blog</div>
+      <h2 class="section-title">Últimas <em>notas</em></h2>
+      <p class="section-sub">Reflexiones, fechas y lo que viene.</p>
+    </div>
+    <div id="blog-preview" class="blog-preview-grid"></div>
+    <div class="blog-preview-actions">
+      <a href="blog/index.html" class="btn-primary blog-all-link">Ver todo el blog</a>
     </div>
   </div>
 </section>
@@ -378,7 +458,9 @@
         <ul class="footer-list">
           <li><a href="#about" class="footer-link"><i data-lucide="chevron-right" class="footer-link-icon" aria-hidden="true"></i><span>Sobre mí</span></a></li>
           <li><a href="#gallery" class="footer-link"><i data-lucide="chevron-right" class="footer-link-icon" aria-hidden="true"></i><span>Galería</span></a></li>
+          <li><a href="#music" class="footer-link"><i data-lucide="chevron-right" class="footer-link-icon" aria-hidden="true"></i><span>Música</span></a></li>
           <li><a href="#store" class="footer-link"><i data-lucide="chevron-right" class="footer-link-icon" aria-hidden="true"></i><span>Tienda</span></a></li>
+          <li><a href="blog/index.html" class="footer-link"><i data-lucide="chevron-right" class="footer-link-icon" aria-hidden="true"></i><span>Blog</span></a></li>
           <li><a href="#contact" class="footer-link"><i data-lucide="chevron-right" class="footer-link-icon" aria-hidden="true"></i><span>Contacto</span></a></li>
         </ul>
       </div>
@@ -401,7 +483,7 @@
     </div>
     <div class="footer-bottom">
       <span>© <span id="year"></span> Enza Rigano · Todos los derechos reservados</span>
-      <span><a href="https://freedomlabs.dev">Freedom Labs</a></span>
+      <span class="footer-bottom-links"><a href="admin/index.html" class="footer-admin-link">Blog admin</a><span aria-hidden="true"> · </span><a href="https://freedomlabs.dev">Freedom Labs</a></span>
     </div>
   </div>
 </footer>
@@ -421,6 +503,27 @@
   </div>
 </div>
 
+<!-- ===== PRODUCT / MUSIC PREVIEW MODAL ===== -->
+<div id="product-modal" class="product-modal" role="dialog" aria-modal="true" aria-label="Detalle del producto" onclick="if(event.target===this) closeProductModal()">
+  <button type="button" class="product-modal-close" onclick="closeProductModal()" aria-label="Cerrar">×</button>
+  <div class="product-modal-inner" onclick="event.stopPropagation()">
+    <div class="product-modal-visual">
+      <img id="product-modal-img" src="" alt="">
+    </div>
+    <div class="product-modal-detail">
+      <h3 id="product-modal-title" class="product-modal-title"></h3>
+      <p id="product-modal-price" class="product-modal-price"></p>
+      <button type="button" id="product-modal-add" class="btn-primary btn-with-icon product-modal-add">
+        Añadir al carrito <i data-lucide="plus" class="btn-lucide" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/public-blog.js"></script>
 <script src="app.js"></script>
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
