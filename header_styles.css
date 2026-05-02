@@ -1,0 +1,72 @@
+/* ===== HEADER ===== */
+header {
+    background: #d6c8ff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: var(--transition);
+    padding: 1.5rem 0;
+}
+
+header.scrolled {
+    background: #d6c8ff;
+    backdrop-filter: blur(20px);
+    padding: 1rem 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.header-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: white;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    font-weight: 300;
+    opacity: 0.8;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    color: white;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.8;
+}
+
+.nav-links a:hover {
+    opacity: 1;
+}
+
+.cart-btn {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    padding: 0.8rem;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    transition: 0.3s;
+}
+
+.cart-btn:hover {
+    background: rgba(255,255,255,0.4);
+}

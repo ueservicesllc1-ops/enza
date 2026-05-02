@@ -1,0 +1,430 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Enza Rigano — Oficial</title>
+  <meta name="description" content="Sitio oficial de Enza Rigano. Música, fotos, videos y tienda oficial."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet"/>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="style.css?v=23"/>
+</head>
+<body>
+
+<div id="cart-overlay" class="cart-overlay" onclick="toggleCart()"></div>
+<aside id="cart-drawer" class="cart-drawer">
+  <div class="cart-header">
+    <h3>Tu Carrito <i data-lucide="shopping-bag"></i></h3>
+    <button type="button" class="cart-close" onclick="toggleCart()" aria-label="Cerrar carrito"><i data-lucide="x"></i></button>
+  </div>
+  <div id="cart-items" class="cart-items">
+    <p class="cart-empty"><i data-lucide="shopping-bag" aria-hidden="true"></i><span>Tu carrito está vacío</span></p>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total-row"><span>Total</span><span id="cart-total">$0.00</span></div>
+    <button type="button" class="btn-checkout" onclick="checkout()">Comprar ahora <i data-lucide="arrow-right" class="btn-lucide" aria-hidden="true"></i></button>
+  </div>
+</aside>
+
+<header id="header">
+  <div class="header-inner">
+    <a href="#hero" class="logo">ENZA<span>RIGANO</span></a>
+    <nav class="nav-links" aria-label="Principal">
+      <a href="#about">Sobre Mí</a>
+      <a href="#gallery">Fotos</a>
+      <a href="#moments">Momentos</a>
+      <a href="#videos">Videos</a>
+      <a href="#store">Tienda</a>
+      <a href="#newsletter">Newsletter</a>
+      <a href="#contact">Contacto</a>
+    </nav>
+    <button type="button" class="cart-btn" onclick="toggleCart()"><i data-lucide="shopping-cart"></i> <span id="cart-count" class="cart-badge">0</span></button>
+    <button type="button" class="nav-toggle" onclick="toggleNav()" aria-label="Abrir menú"><i data-lucide="menu"></i></button>
+  </div>
+</header>
+
+<nav id="mobile-nav" class="mobile-nav" aria-label="Móvil">
+  <a href="#about" onclick="toggleNav()">Sobre Mí</a>
+  <a href="#gallery" onclick="toggleNav()">Fotos</a>
+  <a href="#moments" onclick="toggleNav()">Momentos</a>
+  <a href="#videos" onclick="toggleNav()">Videos</a>
+  <a href="#store" onclick="toggleNav()">Tienda</a>
+  <a href="#newsletter" onclick="toggleNav()">Newsletter</a>
+  <a href="#contact" onclick="toggleNav()">Contacto</a>
+</nav>
+
+<!-- Header (fijo) + este bloque = 1 pantalla: hero flexible + franja marquee -->
+<div id="hero" class="hero-viewport">
+  <section class="hero-section" aria-label="Inicio">
+    <img src="public/hero.png" class="hero-bg-img" alt="" width="1920" height="1080" fetchpriority="high">
+
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-tag">Official Website</div>
+        <h1 class="hero-title">
+          <span class="hero-name-1">Enza</span>
+          <span class="hero-name-2">Rigano</span>
+        </h1>
+        <div class="hero-waveform" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <p class="hero-subtitle">La voz que redefine el pop soul contemporáneo.</p>
+        <div class="hero-btns">
+          <a href="#store" class="btn-primary btn-with-icon"><i data-lucide="shopping-bag" aria-hidden="true"></i> Tienda oficial</a>
+          <a href="#contact" class="btn-outline btn-with-icon"><i data-lucide="mic-2" aria-hidden="true"></i> Contrataciones</a>
+        </div>
+        <div class="hero-socials">
+          <a href="https://instagram.com" class="social-pill" target="_blank" rel="noopener noreferrer"><i data-lucide="instagram"></i> Instagram</a>
+          <a href="https://open.spotify.com" class="social-pill" target="_blank" rel="noopener noreferrer"><i data-lucide="music-2"></i> Spotify</a>
+          <a href="https://youtube.com" class="social-pill" target="_blank" rel="noopener noreferrer"><i data-lucide="youtube"></i> YouTube</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee-wrap" aria-hidden="true">
+    <div class="marquee-track"><div class="marquee-group"><span class="marquee-phrase">Artista emergente</span><span class="marquee-sep" aria-hidden="true"><i data-lucide="sparkle"></i></span><span class="marquee-phrase">Pop latino</span><span class="marquee-sep" aria-hidden="true"><i data-lucide="sparkle"></i></span><span class="marquee-phrase">Nueva voz</span><span class="marquee-sep" aria-hidden="true"><i data-lucide="sparkle"></i></span><span class="marquee-phrase">Streaming</span><span class="marquee-sep" aria-hidden="true"><i data-lucide="sparkle"></i></span><span class="marquee-phrase">Enza Rigano</span><span class="marquee-sep" aria-hidden="true"><i data-lucide="sparkle"></i></span></div><div class="marquee-group"><span class="marquee-phrase">Artista emergente</span><span class="marquee-sep" aria-hidden="true"><i data-lucide="sparkle"></i></span><span class="marquee-phrase">Pop latino</span><span class="marquee-sep" aria-hidden="true"><i data-lucide="sparkle"></i></span><span class="marquee-phrase">Nueva voz</span><span class="marquee-sep" aria-hidden="true"><i data-lucide="sparkle"></i></span><span class="marquee-phrase">Streaming</span><span class="marquee-sep" aria-hidden="true"><i data-lucide="sparkle"></i></span><span class="marquee-phrase">Enza Rigano</span><span class="marquee-sep" aria-hidden="true"><i data-lucide="sparkle"></i></span></div><div class="marquee-group"><span class="marquee-phrase">Artista emergente</span><span class="marquee-sep" aria-hidden="true"><i data-lucide="sparkle"></i></span><span class="marquee-phrase">Pop latino</span><span class="marquee-sep" aria-hidden="true"><i data-lucide="sparkle"></i></span><span class="marquee-phrase">Nueva voz</span><span class="marquee-sep" aria-hidden="true"><i data-lucide="sparkle"></i></span><span class="marquee-phrase">Streaming</span><span class="marquee-sep" aria-hidden="true"><i data-lucide="sparkle"></i></span><span class="marquee-phrase">Enza Rigano</span><span class="marquee-sep" aria-hidden="true"><i data-lucide="sparkle"></i></span></div></div>
+  </div>
+</div>
+
+<!-- ===== ABOUT ===== -->
+<section id="about" class="about">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Biografía</div>
+      <h2>Sobre <em>Enza</em></h2>
+      <p>Manifestando a través de la música: pop soul, afirmaciones y una presencia escénica única.</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-img-wrap">
+        <img src="public/enza4.png" class="about-img" alt="Enza Rigano en sesión" width="700" height="900" loading="lazy">
+        <div class="about-card floating">
+          <i data-lucide="disc-3"></i>
+          <div><strong>Nuevo EP</strong><br><small>Próximamente</small></div>
+        </div>
+        <div class="about-card floating-2">
+          <i data-lucide="mic-2"></i>
+          <div><strong>Contrataciones</strong><br><small>Abierto 2026</small></div>
+        </div>
+      </div>
+      <div class="about-copy">
+        <p class="lead-text">Enza combina melodías contemporáneas con letras que invitan a manifestar lo mejor de cada día.</p>
+        <p>Desde sesiones íntimas hasta escenarios llenos de energía, cada show es una experiencia donde la voz y la intención van de la mano.</p>
+        <div class="about-stats">
+          <div class="stat"><strong>50K+</strong><span>Streams</span></div>
+          <div class="stat"><strong>12</strong><span>Ciudades</span></div>
+          <div class="stat"><strong>100%</strong><span>Corazón</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section id="gallery" class="gallery">
+  <div class="container">
+    <div class="section-header">
+      <h2>Galería <em>Visual</em></h2>
+      <p>Filtra por categoría o abre cada foto en grande.</p>
+    </div>
+    <div class="gallery-filters">
+      <button type="button" class="filter-btn active" data-cat="all" onclick="filterGallery('all', this)">Todas</button>
+      <button type="button" class="filter-btn" data-cat="sesion" onclick="filterGallery('sesion', this)">Sesión</button>
+      <button type="button" class="filter-btn" data-cat="vivo" onclick="filterGallery('vivo', this)">En vivo</button>
+      <button type="button" class="filter-btn" data-cat="estudio" onclick="filterGallery('estudio', this)">Estudio</button>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item tall" data-cat="sesion" onclick="openLightbox('public/enza2.png','Sesión creativa')">
+        <img src="public/enza2.png" alt="Galería Enza Rigano" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-overlay-label"><i data-lucide="maximize-2" aria-hidden="true"></i> Ver</span></div>
+      </div>
+      <div class="gallery-item" data-cat="estudio" onclick="openLightbox('public/enza3.png','Estudio')">
+        <img src="public/enza3.png" alt="Galería Enza Rigano" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-overlay-label"><i data-lucide="maximize-2" aria-hidden="true"></i> Ver</span></div>
+      </div>
+      <div class="gallery-item wide" data-cat="vivo" onclick="openLightbox('public/enza5.png','En vivo')">
+        <img src="public/enza5.png" alt="Galería Enza Rigano" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-overlay-label"><i data-lucide="maximize-2" aria-hidden="true"></i> Ver</span></div>
+      </div>
+      <div class="gallery-item" data-cat="sesion" onclick="openLightbox('public/enza8.png','Sesión')">
+        <img src="public/enza8.png" alt="Galería Enza Rigano" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-overlay-label"><i data-lucide="maximize-2" aria-hidden="true"></i> Ver</span></div>
+      </div>
+      <div class="gallery-item tall" data-cat="vivo" onclick="openLightbox('public/enza9.png','Show')">
+        <img src="public/enza9.png" alt="Galería Enza Rigano" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-overlay-label"><i data-lucide="maximize-2" aria-hidden="true"></i> Ver</span></div>
+      </div>
+      <div class="gallery-item" data-cat="estudio" onclick="openLightbox('public/enza10.png','Estudio')">
+        <img src="public/enza10.png" alt="Galería Enza Rigano" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-overlay-label"><i data-lucide="maximize-2" aria-hidden="true"></i> Ver</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INSTA / MOMENTS CAROUSEL ===== -->
+<section id="moments" class="insta-carousel">
+  <div class="container">
+    <div class="section-header">
+      <h2>Momentos <em>Destacados</em></h2>
+      <p>Un vistazo rápido a backstage, ensayos y energía en el escenario.</p>
+    </div>
+    <div class="insta-slider">
+      <div id="insta-track" class="insta-track">
+        <div class="insta-card"><img src="public/1.jfif" alt="Momento 1" loading="lazy" width="380" height="580"></div>
+        <div class="insta-card"><img src="public/2.jfif" alt="Momento 2" loading="lazy" width="380" height="580"></div>
+        <div class="insta-card"><img src="public/3.jfif" alt="Momento 3" loading="lazy" width="380" height="580"></div>
+        <div class="insta-card"><img src="public/4.jfif" alt="Momento 4" loading="lazy" width="380" height="580"></div>
+        <div class="insta-card"><img src="public/5.jfif" alt="Momento 5" loading="lazy" width="380" height="580"></div>
+        <div class="insta-card"><img src="public/6.jfif" alt="Momento 6" loading="lazy" width="380" height="580"></div>
+        <div class="insta-card"><img src="public/7.jfif" alt="Momento 7" loading="lazy" width="380" height="580"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VIDEOS ===== -->
+<section id="videos" class="videos">
+  <div class="container">
+    <div class="section-header">
+      <h2>Videos <em>Oficiales</em></h2>
+      <p>Toca la miniatura para reproducir en grande (sustituye los IDs de YouTube por los tuyos).</p>
+    </div>
+    <div class="video-grid video-grid--thumbs">
+      <article class="video-card video-card--thumb">
+        <button type="button" class="video-thumb-btn" onclick="openVideo('https://www.youtube.com/embed/jfKfPfyJRdk?autoplay=1&amp;rel=0')" aria-label="Reproducir video 1">
+          <img src="https://img.youtube.com/vi/jfKfPfyJRdk/hqdefault.jpg" alt="" width="480" height="360" loading="lazy">
+          <span class="video-play"><i data-lucide="play"></i></span>
+        </button>
+        <h3 class="video-card-title">Video destacado</h3>
+      </article>
+      <article class="video-card video-card--thumb">
+        <button type="button" class="video-thumb-btn" onclick="openVideo('https://www.youtube.com/embed/kXYiU_JCYtU?autoplay=1&amp;rel=0')" aria-label="Reproducir video 2">
+          <img src="https://img.youtube.com/vi/kXYiU_JCYtU/hqdefault.jpg" alt="" width="480" height="360" loading="lazy">
+          <span class="video-play"><i data-lucide="play"></i></span>
+        </button>
+        <h3 class="video-card-title">Sesión / videoclip (sustituye por tus enlaces)</h3>
+      </article>
+      <article class="video-card video-card--thumb">
+        <button type="button" class="video-thumb-btn" onclick="openVideo('https://www.youtube.com/embed/5qap5aO4i9A?autoplay=1&amp;rel=0')" aria-label="Reproducir video 3">
+          <img src="https://img.youtube.com/vi/5qap5aO4i9A/hqdefault.jpg" alt="" width="480" height="360">
+          <span class="video-play"><i data-lucide="play"></i></span>
+        </button>
+        <h3 class="video-card-title">Playlist ambiente</h3>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STORE ===== -->
+<section id="store" class="marketplace">
+  <div class="container">
+    <div class="section-header">
+      <h2>Tienda <em>Oficial</em></h2>
+      <p>Merch exclusivo: en escritorio se muestran cuatro tarjetas completas; desliza o usa las flechas para ver el resto.</p>
+    </div>
+    <div class="product-carousel-shell">
+      <button type="button" class="carousel-arrow carousel-arrow-prev" onclick="scrollProductCarousel(-1)" aria-label="Productos anteriores"><i data-lucide="chevron-left" aria-hidden="true"></i></button>
+      <div class="product-carousel" id="product-carousel">
+      <div class="product-card">
+        <img src="public/camiseta.png" alt="Camiseta Manifestar" class="product-img" width="400" height="400" loading="lazy">
+        <div class="product-info">
+          <h3>Camiseta Manifestar</h3>
+          <span class="product-price">$29.99</span>
+          <button type="button" class="btn-primary" onclick="addToCart('Camiseta Manifestar', 29.99, 'public/camiseta.png')">Añadir <i data-lucide="plus" class="btn-lucide" aria-hidden="true"></i></button>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="public/hoodie.png" alt="Hoodie" class="product-img" width="400" height="400" loading="lazy">
+        <div class="product-info">
+          <h3>Hoodie Enza</h3>
+          <span class="product-price">$64.99</span>
+          <button type="button" class="btn-primary" onclick="addToCart('Hoodie Enza', 64.99, 'public/hoodie.png')">Añadir <i data-lucide="plus" class="btn-lucide" aria-hidden="true"></i></button>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="public/gorra.png" alt="Gorra" class="product-img" width="400" height="400" loading="lazy">
+        <div class="product-info">
+          <h3>Gorra oficial</h3>
+          <span class="product-price">$26.99</span>
+          <button type="button" class="btn-primary" onclick="addToCart('Gorra oficial', 26.99, 'public/gorra.png')">Añadir <i data-lucide="plus" class="btn-lucide" aria-hidden="true"></i></button>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="public/taza.png" alt="Taza" class="product-img" width="400" height="400" loading="lazy">
+        <div class="product-info">
+          <h3>Taza colección</h3>
+          <span class="product-price">$19.99</span>
+          <button type="button" class="btn-primary" onclick="addToCart('Taza colección', 19.99, 'public/taza.png')">Añadir <i data-lucide="plus" class="btn-lucide" aria-hidden="true"></i></button>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="public/cuadro.png" alt="Cuadro" class="product-img" width="400" height="400" loading="lazy">
+        <div class="product-info">
+          <h3>Cuadro edición limitada</h3>
+          <span class="product-price">$48.99</span>
+          <button type="button" class="btn-primary" onclick="addToCart('Cuadro edición limitada', 48.99, 'public/cuadro.png')">Añadir <i data-lucide="plus" class="btn-lucide" aria-hidden="true"></i></button>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="public/agenda.png" alt="Agenda" class="product-img" width="400" height="400" loading="lazy">
+        <div class="product-info">
+          <h3>Agenda Manifestar</h3>
+          <span class="product-price">$34.99</span>
+          <button type="button" class="btn-primary" onclick="addToCart('Agenda Manifestar', 34.99, 'public/agenda.png')">Añadir <i data-lucide="plus" class="btn-lucide" aria-hidden="true"></i></button>
+        </div>
+      </div>
+    </div>
+      <button type="button" class="carousel-arrow carousel-arrow-next" onclick="scrollProductCarousel(1)" aria-label="Más productos"><i data-lucide="chevron-right" aria-hidden="true"></i></button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NEWSLETTER ===== -->
+<section id="newsletter" class="newsletter">
+  <div class="container">
+    <div class="newsletter-inner">
+      <div>
+        <div class="section-tag">Newsletter</div>
+        <h2 class="section-title" style="margin-bottom: 0.5rem;">Únete al <em>manifestar</em></h2>
+        <p class="section-sub" style="margin-bottom: 0;">Novedades, fechas y contenido exclusivo en tu correo.</p>
+      </div>
+      <form id="newsletter-form" class="nl-form" onsubmit="subscribeNewsletter(event)">
+        <input type="email" name="email" placeholder="tu@email.com" required autocomplete="email">
+        <button type="submit" class="btn-primary btn-with-icon">Suscribirme <i data-lucide="mail" aria-hidden="true"></i></button>
+      </form>
+    </div>
+    <p id="nl-success" class="hidden nl-success nl-success-row" style="text-align:center;margin-top:1rem;"><i data-lucide="check-circle-2" class="success-icon" aria-hidden="true"></i><span>Gracias. Revisa tu bandeja.</span></p>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact" class="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="section-header section-header--left">
+          <div class="section-tag">Contacto</div>
+          <h2 class="section-title">Hablemos de <em>Manifestar</em></h2>
+          <p class="section-sub">Cocreación, prensa y contrataciones.</p>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i data-lucide="mail"></i></div>
+          <div class="contact-detail">
+            <h4>Email</h4>
+            <p><a href="mailto:booking@enzarigano.com">booking@enzarigano.com</a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i data-lucide="map-pin"></i></div>
+          <div class="contact-detail">
+            <h4>Base</h4>
+            <p>Latinoamérica · Disponible para gira</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i data-lucide="calendar"></i></div>
+          <div class="contact-detail">
+            <h4>Agenda</h4>
+            <p>Apertura de fechas 2026</p>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form" id="contact-form">
+        <div class="form-group">
+          <label for="contact-name">Nombre</label>
+          <input id="contact-name" type="text" name="name" placeholder="Tu nombre" required>
+        </div>
+        <div class="form-group">
+          <label for="contact-email">Email</label>
+          <input id="contact-email" type="email" name="email" placeholder="tu@email.com" required autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label for="contact-topic">Motivo</label>
+          <select id="contact-topic" name="topic">
+            <option value="booking">Contratación / show</option>
+            <option value="press">Prensa &amp; medios</option>
+            <option value="collab">Colaboración</option>
+            <option value="other">Otro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="contact-msg">Mensaje</label>
+          <textarea id="contact-msg" name="message" rows="4" placeholder="Cuéntanos tu idea..." required></textarea>
+        </div>
+        <button type="submit" class="btn-submit"><span>Enviar</span><i data-lucide="send-horizontal" class="btn-lucide" aria-hidden="true"></i></button>
+        <p id="contact-success" class="hidden nl-success nl-success-row"><i data-lucide="check-circle-2" class="success-icon" aria-hidden="true"></i><span>Mensaje enviado. Te responderemos pronto.</span></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="footer-logo">Enza Rigano</span>
+        <p>Pop soul contemporáneo. Sitio oficial · Merch, fotos y música en un solo lugar.</p>
+        <div class="footer-payments" aria-hidden="true">
+          <i data-lucide="credit-card"></i>
+          <i data-lucide="shield-check"></i>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Enlaces</h4>
+        <ul class="footer-list">
+          <li><a href="#about" class="footer-link"><i data-lucide="chevron-right" class="footer-link-icon" aria-hidden="true"></i><span>Sobre mí</span></a></li>
+          <li><a href="#gallery" class="footer-link"><i data-lucide="chevron-right" class="footer-link-icon" aria-hidden="true"></i><span>Galería</span></a></li>
+          <li><a href="#store" class="footer-link"><i data-lucide="chevron-right" class="footer-link-icon" aria-hidden="true"></i><span>Tienda</span></a></li>
+          <li><a href="#contact" class="footer-link"><i data-lucide="chevron-right" class="footer-link-icon" aria-hidden="true"></i><span>Contacto</span></a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Redes</h4>
+        <ul class="footer-list">
+          <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer-link"><i data-lucide="chevron-right" class="footer-link-icon" aria-hidden="true"></i><span>Instagram</span></a></li>
+          <li><a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="footer-link"><i data-lucide="chevron-right" class="footer-link-icon" aria-hidden="true"></i><span>YouTube</span></a></li>
+          <li><a href="https://open.spotify.com" target="_blank" rel="noopener noreferrer" class="footer-link"><i data-lucide="chevron-right" class="footer-link-icon" aria-hidden="true"></i><span>Spotify</span></a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul class="footer-list">
+          <li><a href="#" class="footer-link"><i data-lucide="chevron-right" class="footer-link-icon" aria-hidden="true"></i><span>Privacidad</span></a></li>
+          <li><a href="#" class="footer-link"><i data-lucide="chevron-right" class="footer-link-icon" aria-hidden="true"></i><span>Términos</span></a></li>
+          <li><a href="#" class="footer-link"><i data-lucide="chevron-right" class="footer-link-icon" aria-hidden="true"></i><span>Envíos</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Enza Rigano · Todos los derechos reservados</span>
+      <span><a href="https://freedomlabs.dev">Freedom Labs</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== LIGHTBOX ===== -->
+<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Vista ampliada" onclick="closeLightbox()">
+  <button type="button" class="lightbox-close" onclick="event.stopPropagation(); closeLightbox()" aria-label="Cerrar">×</button>
+  <img id="lightbox-img" src="" alt="" onclick="event.stopPropagation()">
+  <p id="lightbox-caption" class="lightbox-caption" onclick="event.stopPropagation()"></p>
+</div>
+
+<!-- ===== VIDEO MODAL ===== -->
+<div id="video-modal" class="video-modal" role="dialog" aria-modal="true" aria-label="Reproductor de video" onclick="closeVideo()">
+  <button type="button" class="video-modal-close" onclick="event.stopPropagation(); closeVideo()" aria-label="Cerrar video">×</button>
+  <div class="video-modal-inner" onclick="event.stopPropagation()">
+    <iframe id="video-iframe" title="Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+</div>
+
+<script src="app.js"></script>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  lucide.createIcons();
+</script>
+</body>
+</html>
