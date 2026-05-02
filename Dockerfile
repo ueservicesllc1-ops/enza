@@ -8,6 +8,7 @@ RUN chmod +x /docker-start.sh
 
 # Todo el sitio en /srv (index.html, style.css, app.js, public/, imágenes…)
 COPY . /srv/
+RUN rm -f /srv/docker-start.sh
 
 ENV PORT=8080
 EXPOSE 8080
