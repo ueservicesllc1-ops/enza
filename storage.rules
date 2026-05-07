@@ -1,0 +1,13 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    /**
+     * REGLAS ABIERTAS (desarrollo / mismo criterio que Firestore abierto).
+     * Cualquiera puede leer y escribir cualquier ruta del bucket.
+     * En producción, restringe a auth, carpetas concretas y tamaño máximo.
+     */
+    match /{allPaths=**} {
+      allow read, write: if true;
+    }
+  }
+}

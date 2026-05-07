@@ -1,10 +1,13 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /posts/{postId} {
-      allow read: if resource.data.published == true || request.auth != null;
-      allow create: if request.auth != null;
-      allow update, delete: if request.auth != null;
+    /**
+     * REGLAS ABIERTAS — cualquiera puede leer y escribir todo.
+     * Solo para desarrollo / depuración. En producción, vuelve a reglas
+     * que exijan auth y/o campos published.
+     */
+    match /{document=**} {
+      allow read, write: if true;
     }
   }
 }

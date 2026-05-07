@@ -48,19 +48,28 @@
     listPublished: function (limit) {
       limit = limit || 10;
       if (!ensureApp()) return Promise.resolve([]);
-      var db = firebase.firestore();
-      return db
+      return firebase
+        .firestore()
         .collection('posts')
-        .where('published', '==', true)
-        .orderBy('createdAt', 'desc')
-        .limit(limit)
         .get()
         .then(function (snap) {
-          return snap.docs.map(function (d) {
+          var rows = snap.docs.map(function (d) {
             var o = d.data();
             o.id = d.id;
             return o;
           });
+          rows.sort(function (a, b) {
+            var ta =
+              a.createdAt && typeof a.createdAt.toMillis === 'function'
+                ? a.createdAt.toMillis()
+                : 0;
+            var tb =
+              b.createdAt && typeof b.createdAt.toMillis === 'function'
+                ? b.createdAt.toMillis()
+                : 0;
+            return tb - ta;
+          });
+          return rows.slice(0, limit);
         });
     },
 
@@ -74,7 +83,6 @@
         .then(function (doc) {
           if (!doc.exists) return null;
           var data = doc.data();
-          if (!data.published) return null;
           data.id = doc.id;
           return data;
         });
@@ -95,8 +103,14 @@
         .map(function (p) {
           var ex = p.excerpt || excerptFromBody(p.body);
           var dateStr = formatDate(p.createdAt);
+          var cover = p.coverImageUrl
+            ? '<div class="blog-card-image-wrap"><img class="blog-card-image" src="' +
+              escapeHtml(p.coverImageUrl) +
+              '" alt="" width="640" height="360" loading="lazy" decoding="async"/></div>'
+            : '';
           return (
             '<article class="blog-card">' +
+            cover +
             '<div class="blog-card-meta">' +
             escapeHtml(dateStr) +
             '</div>' +

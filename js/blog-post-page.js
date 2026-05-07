@@ -36,12 +36,45 @@
       .then(function (p) {
         if (!p) {
           root.innerHTML =
-            '<p class="blog-msg blog-msg--err">Esta entrada no existe o no está publicada.</p>';
+            '<p class="blog-msg blog-msg--err">Esta entrada no existe.</p>';
           return;
         }
         var dateStr = window.blogPublic.formatDate(p.createdAt);
         document.title =
           (p.title || 'Blog') + ' — Enza Rigano';
+        var coverBlock = p.coverImageUrl
+          ? '<figure class="blog-post-cover"><img src="' +
+            window.blogPublic.escapeHtml(p.coverImageUrl) +
+            '" alt="" width="1200" height="675" loading="eager" decoding="async"/></figure>'
+          : '';
+        var atts = Array.isArray(p.attachments) ? p.attachments : [];
+        var attBlock = '';
+        if (atts.length) {
+          var lis = atts
+            .filter(function (a) {
+              return a && a.url;
+            })
+            .map(function (a) {
+              var nm = window.blogPublic.escapeHtml(a.name || 'Descargar');
+              var u = window.blogPublic.escapeHtml(a.url);
+              return (
+                '<li><a href="' +
+                u +
+                '" target="_blank" rel="noopener noreferrer" download>' +
+                nm +
+                '</a></li>'
+              );
+            })
+            .join('');
+          if (lis) {
+            attBlock =
+              '<section class="blog-post-attachments" aria-label="Archivos adjuntos">' +
+              '<h2 class="blog-post-attachments-title">Archivos y descargas</h2>' +
+              '<ul class="blog-post-attachments-list">' +
+              lis +
+              '</ul></section>';
+          }
+        }
         root.innerHTML =
           '<header class="blog-post-header">' +
           '<a class="blog-back" href="index.html">← Blog</a>' +
@@ -52,9 +85,11 @@
           window.blogPublic.escapeHtml(p.title || '') +
           '</h1>' +
           '</header>' +
+          coverBlock +
           '<div class="blog-post-body">' +
           formatBodyHtml(p.body) +
-          '</div>';
+          '</div>' +
+          attBlock;
       })
       .catch(function () {
         root.innerHTML =

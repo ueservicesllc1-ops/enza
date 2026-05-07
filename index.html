@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet"/>
   <script src="https://unpkg.com/lucide@latest"></script>
-  <link rel="stylesheet" href="style.css?v=25"/>
+  <link rel="stylesheet" href="style.css?v=33"/>
 </head>
 <body>
 
@@ -34,6 +34,7 @@
     <nav class="nav-links" aria-label="Principal">
       <a href="#about">Sobre Mí</a>
       <a href="#gallery">Fotos</a>
+      <a href="#books">Libros</a>
       <a href="#moments">Momentos</a>
       <a href="#videos">Videos</a>
       <a href="#music">Música</a>
@@ -50,6 +51,7 @@
 <nav id="mobile-nav" class="mobile-nav" aria-label="Móvil">
   <a href="#about" onclick="toggleNav()">Sobre Mí</a>
   <a href="#gallery" onclick="toggleNav()">Fotos</a>
+  <a href="#books" onclick="toggleNav()">Libros</a>
   <a href="#moments" onclick="toggleNav()">Momentos</a>
   <a href="#videos" onclick="toggleNav()">Videos</a>
   <a href="#music" onclick="toggleNav()">Música</a>
@@ -62,23 +64,10 @@
 <!-- Header (fijo) + este bloque = 1 pantalla: hero flexible + franja marquee -->
 <div id="hero" class="hero-viewport">
   <section class="hero-section" aria-label="Inicio">
-    <img src="public/hero.png" class="hero-bg-img" alt="" width="1920" height="1080" fetchpriority="high">
+    <img src="public/BannerEnza.png" class="hero-bg-img" alt="Enza Rigano" width="1920" height="1080" fetchpriority="high">
 
     <div class="hero-inner">
       <div class="hero-content">
-        <div class="hero-tag">Official Website</div>
-        <h1 class="hero-title">
-          <span class="hero-name-1">Enza</span>
-          <span class="hero-name-2">Rigano</span>
-        </h1>
-        <div class="hero-waveform" aria-hidden="true">
-          <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-        </div>
-        <p class="hero-subtitle">La voz que redefine el pop soul contemporáneo.</p>
-        <div class="hero-btns">
-          <a href="#store" class="btn-primary btn-with-icon"><i data-lucide="shopping-bag" aria-hidden="true"></i> Tienda oficial</a>
-          <a href="#contact" class="btn-outline btn-with-icon"><i data-lucide="mic-2" aria-hidden="true"></i> Contrataciones</a>
-        </div>
         <div class="hero-socials">
           <a href="https://instagram.com" class="social-pill" target="_blank" rel="noopener noreferrer"><i data-lucide="instagram"></i> Instagram</a>
           <a href="https://open.spotify.com" class="social-pill" target="_blank" rel="noopener noreferrer"><i data-lucide="music-2"></i> Spotify</a>
@@ -97,9 +86,8 @@
 <section id="about" class="about">
   <div class="container">
     <div class="section-header">
-      <div class="section-tag">Biografía</div>
+      <div class="section-tag">Sobre Enza</div>
       <h2>Sobre <em>Enza</em></h2>
-      <p>Manifestando a través de la música: pop soul, afirmaciones y una presencia escénica única.</p>
     </div>
     <div class="about-grid">
       <div class="about-img-wrap">
@@ -114,13 +102,11 @@
         </div>
       </div>
       <div class="about-copy">
-        <p class="lead-text">Enza combina melodías contemporáneas con letras que invitan a manifestar lo mejor de cada día.</p>
-        <p>Desde sesiones íntimas hasta escenarios llenos de energía, cada show es una experiencia donde la voz y la intención van de la mano.</p>
-        <div class="about-stats">
-          <div class="stat"><strong>50K+</strong><span>Streams</span></div>
-          <div class="stat"><strong>12</strong><span>Ciudades</span></div>
-          <div class="stat"><strong>100%</strong><span>Corazón</span></div>
-        </div>
+        <p class="lead-text">¿Qué pasaría si tu playlist favorita fuera también tu herramienta de manifestación más poderosa?</p>
+        <p>Este espacio no nació para hablar de mí, sino para resonar contigo. Creo firmemente que cada palabra que pronuncias es una semilla en el campo cuántico, y mi misión es ayudarte a que esas semillas florezcan con ritmo.</p>
+        <p>Aquí, las canciones no son solo melodías; son afirmaciones diseñadas para manifestar. Fusionamos la energía vibrante del afrobeat y los ritmos latinos con decretos de poder para que, mientras bailas, estés reprogramando tu realidad. Es música para la mujer que reconoce su capacidad creadora y decide que el 2026 (y cada año que sigue) es suyo.</p>
+        <p>Para darle rostro a lo que a veces no podemos ver, contamos con nuestra caricatura oficial. Ella es el puente entre el mundo físico y la energía del universo; un recordatorio visual de que las frecuencias y el campo cuántico están siempre a nuestro favor. Acompañada siempre por el sonido auténtico del cuatro venezolano, nuestra esencia musical te invita a conectar con tu brillo natural y ese glow que nadie puede apagar.</p>
+        <p>Tú eliges confiar. Tú eliges crear. Bienvenida a tu ecosistema de manifestación.</p>
       </div>
     </div>
   </div>
@@ -139,32 +125,18 @@
       <button type="button" class="filter-btn" data-cat="vivo" onclick="filterGallery('vivo', this)">En vivo</button>
       <button type="button" class="filter-btn" data-cat="estudio" onclick="filterGallery('estudio', this)">Estudio</button>
     </div>
-    <div class="gallery-grid">
-      <div class="gallery-item tall" data-cat="sesion" onclick="openLightbox('public/enza2.png','Sesión creativa')">
-        <img src="public/enza2.png" alt="Galería Enza Rigano" loading="lazy">
-        <div class="gallery-overlay"><span class="gallery-overlay-label"><i data-lucide="maximize-2" aria-hidden="true"></i> Ver</span></div>
-      </div>
-      <div class="gallery-item" data-cat="estudio" onclick="openLightbox('public/enza3.png','Estudio')">
-        <img src="public/enza3.png" alt="Galería Enza Rigano" loading="lazy">
-        <div class="gallery-overlay"><span class="gallery-overlay-label"><i data-lucide="maximize-2" aria-hidden="true"></i> Ver</span></div>
-      </div>
-      <div class="gallery-item wide" data-cat="vivo" onclick="openLightbox('public/enza5.png','En vivo')">
-        <img src="public/enza5.png" alt="Galería Enza Rigano" loading="lazy">
-        <div class="gallery-overlay"><span class="gallery-overlay-label"><i data-lucide="maximize-2" aria-hidden="true"></i> Ver</span></div>
-      </div>
-      <div class="gallery-item" data-cat="sesion" onclick="openLightbox('public/enza8.png','Sesión')">
-        <img src="public/enza8.png" alt="Galería Enza Rigano" loading="lazy">
-        <div class="gallery-overlay"><span class="gallery-overlay-label"><i data-lucide="maximize-2" aria-hidden="true"></i> Ver</span></div>
-      </div>
-      <div class="gallery-item tall" data-cat="vivo" onclick="openLightbox('public/enza9.png','Show')">
-        <img src="public/enza9.png" alt="Galería Enza Rigano" loading="lazy">
-        <div class="gallery-overlay"><span class="gallery-overlay-label"><i data-lucide="maximize-2" aria-hidden="true"></i> Ver</span></div>
-      </div>
-      <div class="gallery-item" data-cat="estudio" onclick="openLightbox('public/enza10.png','Estudio')">
-        <img src="public/enza10.png" alt="Galería Enza Rigano" loading="lazy">
-        <div class="gallery-overlay"><span class="gallery-overlay-label"><i data-lucide="maximize-2" aria-hidden="true"></i> Ver</span></div>
-      </div>
+    <div class="gallery-grid" id="gallery-grid-root"></div>
+  </div>
+</section>
+
+<!-- ===== LIBROS (Firestore) ===== -->
+<section id="books" class="books-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Libros &amp; <em>descargas</em></h2>
+      <p>Material publicado desde el panel de administración.</p>
     </div>
+    <div id="books-grid-root" class="books-grid"></div>
   </div>
 </section>
 
@@ -194,31 +166,9 @@
   <div class="container">
     <div class="section-header">
       <h2>Videos <em>Oficiales</em></h2>
-      <p>Toca la miniatura para reproducir en grande (sustituye los IDs de YouTube por los tuyos).</p>
+      <p>Toca la miniatura para ver el video.</p>
     </div>
-    <div class="video-grid video-grid--thumbs">
-      <article class="video-card video-card--thumb">
-        <button type="button" class="video-thumb-btn" onclick="openVideo('https://www.youtube.com/embed/jfKfPfyJRdk?autoplay=1&amp;rel=0')" aria-label="Reproducir video 1">
-          <img src="https://img.youtube.com/vi/jfKfPfyJRdk/hqdefault.jpg" alt="" width="480" height="360" loading="lazy">
-          <span class="video-play"><i data-lucide="play"></i></span>
-        </button>
-        <h3 class="video-card-title">Video destacado</h3>
-      </article>
-      <article class="video-card video-card--thumb">
-        <button type="button" class="video-thumb-btn" onclick="openVideo('https://www.youtube.com/embed/kXYiU_JCYtU?autoplay=1&amp;rel=0')" aria-label="Reproducir video 2">
-          <img src="https://img.youtube.com/vi/kXYiU_JCYtU/hqdefault.jpg" alt="" width="480" height="360" loading="lazy">
-          <span class="video-play"><i data-lucide="play"></i></span>
-        </button>
-        <h3 class="video-card-title">Sesión / videoclip (sustituye por tus enlaces)</h3>
-      </article>
-      <article class="video-card video-card--thumb">
-        <button type="button" class="video-thumb-btn" onclick="openVideo('https://www.youtube.com/embed/5qap5aO4i9A?autoplay=1&amp;rel=0')" aria-label="Reproducir video 3">
-          <img src="https://img.youtube.com/vi/5qap5aO4i9A/hqdefault.jpg" alt="" width="480" height="360">
-          <span class="video-play"><i data-lucide="play"></i></span>
-        </button>
-        <h3 class="video-card-title">Playlist ambiente</h3>
-      </article>
-    </div>
+    <div class="video-grid video-grid--thumbs" id="video-grid-root"></div>
   </div>
 </section>
 
@@ -227,47 +177,10 @@
   <div class="container">
     <div class="section-header">
       <div class="section-tag">Música</div>
-      <h2 class="section-title">Escucha &amp; <em>compra</em></h2>
-      <p class="section-sub">Lanza oficiales en streaming y descarga digital. Sustituye los enlaces de Spotify por los tuyos cuando los tengas.</p>
+      <h2 class="section-title">Escucha y <em>manifesta</em></h2>
+      <p class="section-sub">Vista previa de 30 segundos en la web; escucha completa en Spotify.</p>
     </div>
-    <div class="music-grid">
-      <article class="music-card">
-        <button type="button" class="modal-hit music-cover-hit" data-pname="Manifestar — Álbum (digital)" data-pprice="9.99" data-pimg="public/album1.png" aria-label="Ampliar portada Manifestar">
-          <img src="public/album1.png" alt="Manifestar — portada álbum" class="music-cover-img" width="400" height="400" loading="lazy">
-        </button>
-        <h3 class="music-card-title">Manifestar</h3>
-        <p class="music-card-meta">Álbum · Descarga HD</p>
-        <span class="music-card-price">$9.99</span>
-        <div class="music-card-actions">
-          <a href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer" class="btn-outline music-stream-btn">Spotify</a>
-          <button type="button" class="btn-primary music-add-btn" onclick="addToCart('Manifestar — Álbum (digital)', 9.99, 'public/album1.png')">Añadir <i data-lucide="plus" class="btn-lucide" aria-hidden="true"></i></button>
-        </div>
-      </article>
-      <article class="music-card">
-        <button type="button" class="modal-hit music-cover-hit" data-pname="Single — Nuevo amanecer (digital)" data-pprice="1.99" data-pimg="public/album2.png" aria-label="Ampliar portada single">
-          <img src="public/album2.png" alt="Single Nuevo amanecer" class="music-cover-img" width="400" height="400" loading="lazy">
-        </button>
-        <h3 class="music-card-title">Nuevo amanecer</h3>
-        <p class="music-card-meta">Single digital</p>
-        <span class="music-card-price">$1.99</span>
-        <div class="music-card-actions">
-          <a href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer" class="btn-outline music-stream-btn">Spotify</a>
-          <button type="button" class="btn-primary music-add-btn" onclick="addToCart('Single — Nuevo amanecer (digital)', 1.99, 'public/album2.png')">Añadir <i data-lucide="plus" class="btn-lucide" aria-hidden="true"></i></button>
-        </div>
-      </article>
-      <article class="music-card">
-        <button type="button" class="modal-hit music-cover-hit" data-pname="EP Sesiones en vivo (digital)" data-pprice="4.99" data-pimg="public/album3.png" aria-label="Ampliar portada EP">
-          <img src="public/album3.png" alt="EP Sesiones en vivo" class="music-cover-img" width="400" height="400" loading="lazy">
-        </button>
-        <h3 class="music-card-title">Sesiones en vivo</h3>
-        <p class="music-card-meta">EP · Digital</p>
-        <span class="music-card-price">$4.99</span>
-        <div class="music-card-actions">
-          <a href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer" class="btn-outline music-stream-btn">Spotify</a>
-          <button type="button" class="btn-primary music-add-btn" onclick="addToCart('EP Sesiones en vivo (digital)', 4.99, 'public/album3.png')">Añadir <i data-lucide="plus" class="btn-lucide" aria-hidden="true"></i></button>
-        </div>
-      </article>
-    </div>
+    <div class="music-grid" id="music-grid-root"></div>
   </div>
 </section>
 
@@ -353,11 +266,11 @@
     <div class="section-header">
       <div class="section-tag">Blog</div>
       <h2 class="section-title">Últimas <em>notas</em></h2>
-      <p class="section-sub">Reflexiones, fechas y lo que viene.</p>
+      <p class="section-sub">Reflexiones y poder creador</p>
     </div>
     <div id="blog-preview" class="blog-preview-grid"></div>
     <div class="blog-preview-actions">
-      <a href="blog/index.html" class="btn-primary blog-all-link">Ver todo el blog</a>
+      <a href="blog/index.html" class="btn-primary blog-all-link">Quiero mis herramientas para manifestar</a>
     </div>
   </div>
 </section>
@@ -368,8 +281,8 @@
     <div class="newsletter-inner">
       <div>
         <div class="section-tag">Newsletter</div>
-        <h2 class="section-title" style="margin-bottom: 0.5rem;">Únete al <em>manifestar</em></h2>
-        <p class="section-sub" style="margin-bottom: 0;">Novedades, fechas y contenido exclusivo en tu correo.</p>
+        <h2 class="section-title" style="margin-bottom: 0.5rem;">Únete a <em>Manifestadoras VIP</em></h2>
+        <p class="section-sub" style="margin-bottom: 0;">Herramientas y afirmaciones para crear tu realidad.</p>
       </div>
       <form id="newsletter-form" class="nl-form" onsubmit="subscribeNewsletter(event)">
         <input type="email" name="email" placeholder="tu@email.com" required autocomplete="email">
@@ -458,6 +371,7 @@
         <ul class="footer-list">
           <li><a href="#about" class="footer-link"><i data-lucide="chevron-right" class="footer-link-icon" aria-hidden="true"></i><span>Sobre mí</span></a></li>
           <li><a href="#gallery" class="footer-link"><i data-lucide="chevron-right" class="footer-link-icon" aria-hidden="true"></i><span>Galería</span></a></li>
+          <li><a href="#books" class="footer-link"><i data-lucide="chevron-right" class="footer-link-icon" aria-hidden="true"></i><span>Libros</span></a></li>
           <li><a href="#music" class="footer-link"><i data-lucide="chevron-right" class="footer-link-icon" aria-hidden="true"></i><span>Música</span></a></li>
           <li><a href="#store" class="footer-link"><i data-lucide="chevron-right" class="footer-link-icon" aria-hidden="true"></i><span>Tienda</span></a></li>
           <li><a href="blog/index.html" class="footer-link"><i data-lucide="chevron-right" class="footer-link-icon" aria-hidden="true"></i><span>Blog</span></a></li>
@@ -523,8 +437,9 @@
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
 <script src="js/firebase-config.js"></script>
-<script src="js/public-blog.js"></script>
+<script src="js/public-blog.js?v=3"></script>
 <script src="app.js"></script>
+<script src="js/site-firestore.js?v=3"></script>
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
   lucide.createIcons();

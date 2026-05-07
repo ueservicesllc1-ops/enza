@@ -4,18 +4,18 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="robots" content="noindex, nofollow"/>
-  <title>Admin · Blog Enza Rigano</title>
+  <title>Panel de contenidos · Enza Rigano</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="../style.css?v=24"/>
+  <link rel="stylesheet" href="../style.css?v=35"/>
 </head>
 <body class="admin-body">
 
 <header class="admin-header">
   <div class="container admin-header-inner">
     <a href="../index.html" class="logo admin-logo">ENZA<span>RIGANO</span></a>
-    <span class="admin-badge">Blog · Administración</span>
+    <span class="admin-badge">Contenidos</span>
     <button type="button" id="btn-logout" class="btn-outline admin-logout" hidden>Cerrar sesión</button>
   </div>
 </header>
@@ -26,56 +26,253 @@
   </p>
 
   <section id="login-panel" class="admin-login-panel">
-    <h1 class="admin-page-title">Acceso al blog</h1>
-    <p class="admin-intro">Inicia sesión con el correo autorizado. Primera vez: usa «Crear cuenta» con un correo seguro solo para ti.</p>
+    <h1 class="admin-page-title">Acceso al panel</h1>
+    <p class="admin-intro">Introduce el PIN de equipo. Con él se abre una sesión <strong>anónima</strong> en Firebase. En la consola del proyecto debe estar activado: <strong>Authentication</strong> → <em>Sign-in method</em> → <strong>Anónimo</strong>.</p>
     <div class="admin-login-fields">
-      <label for="login-email">Correo</label>
-      <input id="login-email" type="email" autocomplete="username" placeholder="tu@email.com"/>
-      <label for="login-password">Contraseña</label>
-      <input id="login-password" type="password" autocomplete="current-password" placeholder="••••••••"/>
+      <label for="login-pin">PIN</label>
+      <input id="login-pin" type="password" inputmode="numeric" autocomplete="off" maxlength="32" placeholder="PIN"/>
     </div>
     <p id="login-msg" class="admin-msg" hidden></p>
     <div class="admin-login-actions">
       <button type="button" id="btn-login" class="btn-primary">Entrar</button>
-      <button type="button" id="btn-register" class="btn-outline admin-btn-secondary">Crear cuenta</button>
     </div>
   </section>
 
-  <section id="admin-panel" class="admin-editor" hidden>
-    <div class="admin-editor-head">
-      <h1 id="admin-form-title" class="admin-page-title">Nueva entrada</h1>
-      <button type="button" id="btn-new-post" class="btn-outline">Nueva entrada</button>
-    </div>
+  <section id="admin-panel" hidden>
+    <div class="admin-layout">
+      <aside class="admin-sidebar" aria-label="Secciones">
+        <nav class="admin-side-nav">
+          <button type="button" class="admin-side-link active" data-panel="gallery">Galería</button>
+          <button type="button" class="admin-side-link" data-panel="blog">Blog</button>
+          <button type="button" class="admin-side-link" data-panel="books">Libros</button>
+          <button type="button" class="admin-side-link" data-panel="music">Música</button>
+          <button type="button" class="admin-side-link" data-panel="videos">Videos</button>
+        </nav>
+      </aside>
+      <div class="admin-panels">
 
-    <form id="post-form" class="admin-form">
-      <label for="post-title">Título</label>
-      <input id="post-title" type="text" required maxlength="200" placeholder="Título del post"/>
+        <div id="panel-gallery" class="admin-panel-page admin-editor">
+          <div class="admin-editor-head">
+            <h1 id="gallery-form-title" class="admin-page-title">Nueva imagen</h1>
+            <button type="button" id="btn-new-gallery" class="btn-outline">Nueva imagen</button>
+          </div>
+          <form id="gallery-form" class="admin-form admin-form--gallery">
+            <label for="gl-image">1. Imagen</label>
+            <div class="admin-cover-row">
+              <input id="gl-image" type="file" accept="image/jpeg,image/png,image/webp,image/gif"/>
+              <button type="button" id="btn-gl-image-clear" class="btn-outline admin-btn-small" hidden>Quitar</button>
+            </div>
+            <p class="admin-hint admin-hint--block">Vista previa</p>
+            <div id="gl-preview" class="admin-gallery-preview" aria-live="polite">
+              <div class="admin-gallery-preview-placeholder">Aquí verás la imagen al elegirla</div>
+            </div>
 
-      <label for="post-excerpt">Resumen <span class="admin-hint">(opcional; si lo dejas vacío se genera solo)</span></label>
-      <textarea id="post-excerpt" rows="2" maxlength="400" placeholder="Una línea para listados"></textarea>
+            <label for="gl-title">2. Título</label>
+            <input id="gl-title" type="text" maxlength="200" placeholder="Opcional · ej. Sesión creativa"/>
 
-      <label for="post-body">Contenido</label>
-      <textarea id="post-body" rows="14" required placeholder="Escribe aquí. Separa párrafos con una línea en blanco."></textarea>
+            <label for="gl-category">3. Categoría</label>
+            <select id="gl-category">
+              <option value="sesion">Sesión</option>
+              <option value="vivo">En vivo</option>
+              <option value="estudio">Estudio</option>
+              <option value="otro">Otro</option>
+            </select>
 
-      <label class="admin-checkbox">
-        <input id="post-published" type="checkbox"/>
-        <span>Publicar (visible en la web)</span>
-      </label>
+            <label for="gl-layout">4. Formato en la cuadrícula</label>
+            <select id="gl-layout">
+              <option value="">Normal</option>
+              <option value="tall">Alto</option>
+              <option value="wide">Ancho</option>
+            </select>
 
-      <p id="form-msg" class="admin-msg" hidden></p>
-      <button type="submit" class="btn-primary admin-submit">Guardar entrada</button>
-    </form>
+            <label for="gl-sort">5. Orden <span class="admin-hint">(número menor sale antes)</span></label>
+            <input id="gl-sort" type="number" value="0" step="1"/>
 
-    <div class="admin-list-wrap">
-      <h2 class="admin-list-title">Tus entradas</h2>
-      <ul id="admin-post-list" class="admin-post-list"></ul>
+            <label class="admin-checkbox">
+              <input id="gl-published" type="checkbox" checked/>
+              <span>Visible en la web</span>
+            </label>
+
+            <p id="gl-form-msg" class="admin-msg" hidden></p>
+            <button type="submit" class="btn-primary admin-submit">Guardar imagen</button>
+          </form>
+          <div class="admin-list-wrap">
+            <h2 class="admin-list-title">Imágenes de galería</h2>
+            <ul id="admin-gallery-list" class="admin-post-list"></ul>
+          </div>
+        </div>
+
+        <div id="panel-blog" class="admin-panel-page admin-editor" hidden>
+          <div class="admin-editor-head">
+            <h1 id="admin-form-title" class="admin-page-title">Nueva entrada</h1>
+            <button type="button" id="btn-new-post" class="btn-outline">Nueva entrada</button>
+          </div>
+
+          <form id="post-form" class="admin-form">
+            <label for="post-title">Título</label>
+            <input id="post-title" type="text" required maxlength="200" placeholder="Título del post"/>
+
+            <label for="post-excerpt">Resumen <span class="admin-hint">(opcional; si lo dejas vacío se genera solo)</span></label>
+            <textarea id="post-excerpt" rows="2" maxlength="400" placeholder="Una línea para listados"></textarea>
+
+            <label for="post-cover">Imagen de portada <span class="admin-hint">(opcional · Firebase Storage)</span></label>
+            <div class="admin-cover-row">
+              <input id="post-cover" type="file" accept="image/jpeg,image/png,image/webp,image/gif"/>
+              <button type="button" id="btn-cover-clear" class="btn-outline admin-btn-small" hidden>Quitar portada</button>
+            </div>
+            <div id="post-cover-preview" class="admin-cover-preview" hidden></div>
+
+            <label for="post-attachments">Archivos adjuntos <span class="admin-hint">(máx. 50 MB c/u)</span></label>
+            <input id="post-attachments" type="file" multiple/>
+            <ul id="post-attachments-list" class="admin-attachments-list" hidden></ul>
+
+            <label for="post-body">Contenido</label>
+            <textarea id="post-body" rows="14" required placeholder="Escribe aquí. Separa párrafos con una línea en blanco."></textarea>
+
+            <label class="admin-checkbox">
+              <input id="post-published" type="checkbox"/>
+              <span>Publicar (visible en la web)</span>
+            </label>
+
+            <p id="form-msg" class="admin-msg" hidden></p>
+            <button type="submit" class="btn-primary admin-submit">Guardar entrada</button>
+          </form>
+
+          <div class="admin-list-wrap">
+            <h2 class="admin-list-title">Tus entradas</h2>
+            <ul id="admin-post-list" class="admin-post-list"></ul>
+          </div>
+        </div>
+
+        <div id="panel-books" class="admin-panel-page admin-editor" hidden>
+          <div class="admin-editor-head">
+            <h1 id="book-form-title" class="admin-page-title">Nuevo libro</h1>
+            <button type="button" id="btn-new-book" class="btn-outline">Nuevo libro</button>
+          </div>
+          <form id="book-form" class="admin-form">
+            <label for="bk-title">Título</label>
+            <input id="bk-title" type="text" required maxlength="200" placeholder="Título del libro"/>
+
+            <label for="bk-description">Descripción <span class="admin-hint">(opcional)</span></label>
+            <textarea id="bk-description" rows="4" maxlength="2000" placeholder="Resumen o nota"></textarea>
+
+            <label for="bk-sort">Orden <span class="admin-hint">(menor = primero)</span></label>
+            <input id="bk-sort" type="number" value="0" step="1"/>
+
+            <label for="bk-cover">Portada <span class="admin-hint">(imagen · Storage)</span></label>
+            <div class="admin-cover-row">
+              <input id="bk-cover" type="file" accept="image/jpeg,image/png,image/webp,image/gif"/>
+              <button type="button" id="btn-bk-cover-clear" class="btn-outline admin-btn-small" hidden>Quitar portada</button>
+            </div>
+            <div id="bk-cover-preview" class="admin-cover-preview" hidden></div>
+
+            <label for="bk-file">Archivo del libro <span class="admin-hint">(PDF u otro · máx. 50 MB)</span></label>
+            <div class="admin-cover-row">
+              <input id="bk-file" type="file" accept=".pdf,application/pdf,application/epub+zip,.epub"/>
+              <button type="button" id="btn-bk-file-clear" class="btn-outline admin-btn-small" hidden>Quitar PDF</button>
+            </div>
+            <p id="bk-file-hint" class="admin-hint" style="margin:0;">Si ya hay archivo guardado, puedes sustituirlo o quitarlo con el botón.</p>
+
+            <label class="admin-checkbox">
+              <input id="bk-published" type="checkbox"/>
+              <span>Publicar en la web</span>
+            </label>
+
+            <p id="bk-form-msg" class="admin-msg" hidden></p>
+            <button type="submit" class="btn-primary admin-submit">Guardar libro</button>
+          </form>
+          <div class="admin-list-wrap">
+            <h2 class="admin-list-title">Libros</h2>
+            <ul id="admin-book-list" class="admin-post-list"></ul>
+          </div>
+        </div>
+
+        <div id="panel-music" class="admin-panel-page admin-editor" hidden>
+          <div class="admin-editor-head">
+            <h1 id="music-form-title" class="admin-page-title">Nueva canción</h1>
+            <button type="button" id="btn-new-music" class="btn-outline">Nueva canción</button>
+          </div>
+          <form id="music-form" class="admin-form">
+            <label for="mu-title">Título</label>
+            <input id="mu-title" type="text" maxlength="200" placeholder="Nombre de la canción"/>
+
+            <label for="mu-spotify">Enlace de Spotify <span class="admin-hint">(obligatorio para el botón en la web)</span></label>
+            <input id="mu-spotify" type="url" inputmode="url" placeholder="https://open.spotify.com/track/... o álbum"/>
+
+            <label for="mu-audio">Archivo de audio <span class="admin-hint">(MP3, WAV, OGG… · vista previa 30 s en el sitio · máx. 50 MB)</span></label>
+            <input id="mu-audio" type="file" accept="audio/mpeg,audio/mp3,.mp3,audio/wav,.wav,audio/ogg,.ogg,audio/mp4,.m4a,audio/x-m4a"/>
+
+            <label for="mu-cover">Portada <span class="admin-hint">(opcional)</span></label>
+            <div class="admin-cover-row">
+              <input id="mu-cover" type="file" accept="image/jpeg,image/png,image/webp,image/gif"/>
+              <button type="button" id="btn-mu-cover-clear" class="btn-outline admin-btn-small" hidden>Quitar</button>
+            </div>
+            <div id="mu-cover-preview" class="admin-cover-preview" hidden></div>
+
+            <label for="mu-sort">Orden <span class="admin-hint">(menor = primero)</span></label>
+            <input id="mu-sort" type="number" value="0" step="1"/>
+
+            <label class="admin-checkbox">
+              <input id="mu-published" type="checkbox" checked/>
+              <span>Visible en «Escucha y manifesta»</span>
+            </label>
+
+            <p id="mu-form-msg" class="admin-msg" hidden></p>
+            <button type="submit" class="btn-primary admin-submit">Guardar canción</button>
+          </form>
+          <div class="admin-list-wrap">
+            <h2 class="admin-list-title">Canciones</h2>
+            <ul id="admin-music-list" class="admin-post-list"></ul>
+          </div>
+        </div>
+
+        <div id="panel-videos" class="admin-panel-page admin-editor" hidden>
+          <div class="admin-editor-head">
+            <h1 id="video-form-title" class="admin-page-title">Nuevo video</h1>
+            <button type="button" id="btn-new-video" class="btn-outline">Nuevo video</button>
+          </div>
+          <form id="video-form" class="admin-form">
+            <label for="vid-youtube">Enlace de YouTube</label>
+            <input id="vid-youtube" type="url" inputmode="url" required placeholder="https://www.youtube.com/watch?v=… o youtu.be/… o Shorts"/>
+            <p class="admin-hint" style="margin-top:0;">Acepta enlaces normales, embed, youtu.be o Shorts.</p>
+
+            <label for="vid-title">Título <span class="admin-hint">(opcional · se muestra bajo la miniatura)</span></label>
+            <input id="vid-title" type="text" maxlength="200" placeholder="Ej. Videoclip oficial"/>
+
+            <label for="vid-sort">Orden <span class="admin-hint">(menor = primero)</span></label>
+            <input id="vid-sort" type="number" value="0" step="1"/>
+
+            <label class="admin-checkbox">
+              <input id="vid-published" type="checkbox" checked/>
+              <span>Visible en la web (Videos oficiales)</span>
+            </label>
+
+            <p id="vid-form-msg" class="admin-msg" hidden></p>
+            <button type="submit" class="btn-primary admin-submit">Guardar video</button>
+          </form>
+          <div class="admin-list-wrap">
+            <h2 class="admin-list-title">Videos</h2>
+            <ul id="admin-video-list" class="admin-post-list"></ul>
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 </main>
 
+<div id="admin-image-lightbox" class="admin-image-lightbox" hidden aria-modal="true" role="dialog" aria-label="Vista ampliada">
+  <button type="button" class="admin-lightbox-close" aria-label="Cerrar">&times;</button>
+  <div class="admin-image-lightbox-dialog">
+    <img id="admin-lightbox-img" class="admin-lightbox-img" src="" alt=""/>
+    <p id="admin-lightbox-caption" class="admin-lightbox-caption"></p>
+  </div>
+</div>
+
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-storage-compat.js"></script>
 <script src="../js/firebase-config.js"></script>
 <script src="../js/admin-blog.js"></script>
 </body>

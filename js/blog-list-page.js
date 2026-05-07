@@ -25,8 +25,17 @@
             var ex =
               p.excerpt || window.blogPublic.excerptFromBody(p.body);
             var dateStr = window.blogPublic.formatDate(p.createdAt);
+            var thumb = p.coverImageUrl
+              ? '<div class="blog-list-thumb"><img src="' +
+                window.blogPublic.escapeHtml(p.coverImageUrl) +
+                '" alt="" width="320" height="200" loading="lazy" decoding="async"/></div>'
+              : '';
             return (
-              '<article class="blog-list-item">' +
+              '<article class="blog-list-item blog-list-item--' +
+              (p.coverImageUrl ? 'with-thumb' : 'no-thumb') +
+              '">' +
+              thumb +
+              '<div class="blog-list-item-body">' +
               '<time class="blog-list-date">' +
               window.blogPublic.escapeHtml(dateStr) +
               '</time>' +
@@ -39,7 +48,7 @@
               '<a class="btn-primary blog-list-read" href="post.html?id=' +
               encodeURIComponent(p.id) +
               '">Leer entrada</a>' +
-              '</article>'
+              '</div></article>'
             );
           })
           .join('');
